@@ -10,12 +10,10 @@ module.exports = options => {
 
     let message = data.message
     let mess = message.split('')
-    if (mess[0]!=='天'||mess[1]!=='气') {
+    if (mess[0] !== '天' || mess[1] !== '气') {
       return
     }
-    let city = mess.slice(3,mess.length)
-    city = city.join('')
-    console.log(city)
+    let city = mess.slice(3, mess.length).join('')
     if (data.message_type === 'group') {
       ws.send('send_group_msg', {
         group_id: data.group_id,
