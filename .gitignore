@@ -1,0 +1,11 @@
+node_modules
+.idea
+.vscode
+go-cqhttp/*
+!go-cqhttp/.gitkeep
+
+.DS_Store
+yarn.lock
+package-lock.json
+
+plugin/*/db.sqlite
