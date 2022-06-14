@@ -8,12 +8,21 @@ module.exports = options => {
     if (!data.message) {
       return
     }
-    let message = data.message
+    let message = data.message, zhihu = 0, douyin = 0;
     if (WHITE_LIST_ZHIHU.includes(message)) {
-      return
+      zhihu = 1;
+    }
+    if (WHITE_LIST_DOUYIN.includes(message)) {
+      douyin = 1;
     }
     function sendMessage (zhihu, douyin) {
-      getzhihu
+
+      if (zhihu) {
+        const getCos = service.getZhihuHot
+      }
+      if (douyin) {
+        const getCos = service.getDouyinHot
+      }
       if (data.message_type === 'group') {
         ws.send('send_group_msg', {
           group_id: data.group_id,

@@ -4,7 +4,7 @@ module.exports = {
     ws: 'ws://0.0.0.0:6700'
   },
   plugin: {
-    './plugin/zhihu': {},
+    './plugin/whatIsHot': {},
     './plugin/bbfre': {},
     './plugin/dyh': {},
     './plugin/zhouhao': {},
