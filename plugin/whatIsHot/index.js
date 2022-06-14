@@ -1,7 +1,4 @@
-const {
-  getZhihuHot,
-  getDouyinHot
-} = require('./service.js')
+const service = require('./service.js')
 
 const WHITE_LIST_ZHIHU = ['zhihu', '知乎']
 const WHITE_LIST_DOUYIN = ['douyin', '抖音']
@@ -30,7 +27,7 @@ module.exports = options => {
                   id: data.message_id
                 }
               },
-              ...(await getZhihuHot())
+              ...(await service.getZhihuHot())
             ]
           })
           return
@@ -39,7 +36,7 @@ module.exports = options => {
         if (data.message_type === 'private') {
           ws.send('send_private_msg', {
             user_id: data.user_id,
-            message: await getZhihuHot()
+            message: await service.getZhihuHot()
           })
         }
 
@@ -56,7 +53,7 @@ module.exports = options => {
                   id: data.message_id
                 }
               },
-              ...(await getDouyinHot())
+              ...(await service.getDouyinHot())
             ]
           })
           return
@@ -65,7 +62,7 @@ module.exports = options => {
         if (data.message_type === 'private') {
           ws.send('send_private_msg', {
             user_id: data.user_id,
-            message: await getDouyinHot()
+            message: await service.getDouyinHot()
           })
         }
 
