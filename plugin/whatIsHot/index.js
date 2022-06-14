@@ -8,67 +8,62 @@ module.exports = options => {
     if (!data.message) {
       return
     }
-    let message = data.message, zhihu = 0, douyin = 0;
+    let message = data.message;
     if (WHITE_LIST_ZHIHU.includes(message)) {
-      zhihu = 1;
-    }
-    if (WHITE_LIST_DOUYIN.includes(message)) {
-      douyin = 1;
-    }
-    function sendMessage (zhihu, douyin) {
-      if (zhihu) {
-        if (data.message_type === 'group') {
-          ws.send('send_group_msg', {
-            group_id: data.group_id,
-            message: [
-              {
-                type: 'reply',
-                data: {
-                  id: data.message_id
-                }
-              },
-              ...(await service.getZhihuHot())
-            ]
-          })
-          return
-        }
-
-        if (data.message_type === 'private') {
-          ws.send('send_private_msg', {
-            user_id: data.user_id,
-            message: await service.getZhihuHot()
-          })
-        }
-
+      if (data.message_type === 'group') {
+        ws.send('send_group_msg', {
+          group_id: data.group_id,
+          message: [
+            {
+              type: 'reply',
+              data: {
+                id: data.message_id
+              }
+            },
+            ...(await service.getZhihuHot())
+          ]
+        })
         return
       }
-      if (douyin) {
-        if (data.message_type === 'group') {
-          ws.send('send_group_msg', {
-            group_id: data.group_id,
-            message: [
-              {
-                type: 'reply',
-                data: {
-                  id: data.message_id
-                }
-              },
-              ...(await service.getDouyinHot())
-            ]
-          })
-          return
-        }
 
-        if (data.message_type === 'private') {
-          ws.send('send_private_msg', {
-            user_id: data.user_id,
-            message: await service.getDouyinHot()
-          })
-        }
-
-        return
+      if (data.message_type === 'private') {
+        ws.send('send_private_msg', {
+          user_id: data.user_id,
+          message: await service.getZhihuHot()
+        })
       }
+
       return
     }
+    if (WHITE_LIST_DOUYIN.includes(message)) {
+      if (data.message_type === 'group') {
+        ws.send('send_group_msg', {
+          group_id: data.group_id,
+          message: [
+            {
+              type: 'reply',
+              data: {
+                id: data.message_id
+              }
+            },
+            ...(await service.getDouyinHot())
+          ]
+        })
+        return
+      }
+
+      if (data.message_type === 'private') {
+        ws.send('send_private_msg', {
+          user_id: data.user_id,
+          message: await service.getDouyinHot()
+        })
+      }
+
+      return
+    }
+
+
+    return
+
   }
 }
