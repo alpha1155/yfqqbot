@@ -15,12 +15,6 @@ async function getSexyPhoto () {
 				data: {
 					file
 				}
-			},
-			{
-				type: 'text',
-				data: {
-					text
-				}
 			}
 		]
 	} catch (error) {
