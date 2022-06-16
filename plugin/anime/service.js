@@ -5,8 +5,8 @@ const urlGetSexyPhoto = 'https://api.lolicon.app/setu/v2'
 async function getSexyPhoto () {
 	try {
 		const res = await axios(urlGetSexyPhoto);
-		const url = res.data.data[0].urls.original.split('/')
-		const file = 'https://pixiv.re/' + url[11]
+		const url = res.data.data[0].urls.original.split('cat')
+		const file = url.join('re')
 		const text = res.data.data[0].tags.join(' ')
 		console.log(file, text);
 		return [
