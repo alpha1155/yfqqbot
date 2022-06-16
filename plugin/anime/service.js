@@ -7,6 +7,7 @@ async function getSexyPhoto () {
 		const res = await axios(urlGetSexyPhoto);
 		const file = res.data.data[0].urls.original
 		const text = res.data.data[0].tags.join(' ')
+		console.log(file, text);
 		return [
 			{
 				type: 'image',
