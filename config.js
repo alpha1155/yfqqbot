@@ -4,6 +4,7 @@ module.exports = {
     ws: 'ws://0.0.0.0:6700'
   },
   plugin: {
+    './plugin/anime': {},
     './plugin/qrcode': {},
     './plugin/whatIsHot': {},
     './plugin/bbfre': {},
