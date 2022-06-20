@@ -1,4 +1,5 @@
 const { ws, http } = require('./bot')
+// const { gitHook } = require('./hook')
 const config = require('./config')
 
 const plugins = Object.keys(config.plugin).map(name =>
