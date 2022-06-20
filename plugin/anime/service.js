@@ -2,7 +2,7 @@ const axios = require('axios')
 
 const urlGetSexyPhoto = 'https://api.lolicon.app/setu/v2'
 
-async function getSexyPhoto () {
+async function getSexyPhoto() {
 	try {
 		const res = await axios(urlGetSexyPhoto);
 		const url = res.data.data[0].urls.original.split('cat')
@@ -18,6 +18,10 @@ async function getSexyPhoto () {
 			}
 		]
 	} catch (error) {
+		ws.send('send_private_msg', {
+			user_id: 2931470156,
+			message: error
+		})
 		console.error('[anime]', error)
 		return [
 			{
