@@ -2,7 +2,7 @@ const req = require('express/lib/request')
 const { ws, http } = require('./bot')
 // const { gitHook } = require('./hook')
 const config = require('./config')
-
+const shell = require('shelljs')
 const service = require('./plugin/anime/service')
 const { createApp } = require('./develop')
 const app = createApp(7700)
@@ -16,16 +16,21 @@ ws.listen(data => {
   }
 
 
-  
+
   plugins.forEach(plugin => plugin({ data, ws, http }))
 })
 
 
 app.post('/githook', async (req, res) => {
   console.log(req.body)
+
   ws.send('send_private_msg', {
     user_id: 2931470156,
     message: await service.getSexyPhoto(ws)
   })
+  if (shell.exec('git pull').code !== 0) {
+    shell.echo('Error: Git commit failed');
+    shell.exit(1);
+  }
   res.send('hello world')
 })
