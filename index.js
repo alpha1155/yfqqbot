@@ -15,6 +15,8 @@ ws.listen(data => {
     console.log(data)
   }
 
+
+  
   plugins.forEach(plugin => plugin({ data, ws, http }))
 })
 
