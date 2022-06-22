@@ -1,9 +1,9 @@
 const axios = require('axios')
 
-const urlGetSexyPhoto = 'https://api.lolicon.app/setu/v2'
-
-async function getSexyPhoto() {
+async function getSexyPhoto (ws) {
 	try {
+		const urlGetSexyPhoto = 'https://api.lolicon.app/setu/v2'
+
 		const res = await axios(urlGetSexyPhoto);
 		const url = res.data.data[0].urls.original.split('cat')
 		const file = url.join('re')
@@ -20,7 +20,12 @@ async function getSexyPhoto() {
 	} catch (error) {
 		ws.send('send_private_msg', {
 			user_id: 2931470156,
-			message: error
+			message: {
+				type: 'text',
+				data: {
+					text: error
+				}
+			}
 		})
 		console.error('[anime]', error)
 		return [

@@ -24,7 +24,7 @@ module.exports = options => {
 							id: data.message_id
 						}
 					},
-					...(await service.getSexyPhoto())
+					...(await service.getSexyPhoto(ws))
 				]
 			})
 			return
@@ -33,7 +33,7 @@ module.exports = options => {
 		if (data.message_type === 'private') {
 			ws.send('send_private_msg', {
 				user_id: data.user_id,
-				message: await service.getSexyPhoto()
+				message: await service.getSexyPhoto(ws)
 			})
 			return
 		}
