@@ -30,7 +30,7 @@ app.post('/githook', async (req, res) => {
   })
   if (shell.exec('git pull').code !== 0) {
     shell.echo('Error: Git pull failed');
-    // shell.exit(1);
+    shell.exit(1);
   }
   res.send('hello world')
 })
