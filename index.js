@@ -19,8 +19,6 @@ ws.listen(data => {
 })
 
 
-
-
 app.get('/githook', async (req, res) => {
   console.log(req.body)
   ws.send('send_private_msg', {
