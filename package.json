@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_ENV=development nodemon index.js&&node ./hook",
+    "dev": "cross-env NODE_ENV=development nodemon index.js",
     "start": "cross-env NODE_ENV=production pm2 start index.js --name go-cqhttp-node --log-date-format 'YYYY-MM-DD HH:mm:ss'",
     "reload": "pm2 reload go-cqhttp-node"
   },
