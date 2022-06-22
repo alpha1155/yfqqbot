@@ -29,8 +29,8 @@ app.post('/githook', async (req, res) => {
     message: await service.getSexyPhoto(ws)
   })
   if (shell.exec('git pull').code !== 0) {
-    shell.echo('Error: Git commit failed');
-    shell.exit(1);
+    shell.echo('Error: Git pull failed');
+    // shell.exit(1);
   }
   res.send('hello world')
 })
