@@ -23,7 +23,7 @@ ws.listen(data => {
 
 app.post('/githook', async (req, res) => {
   console.log(req.body)
-
+  console.log("------------------------------------------------------")
   ws.send('send_private_msg', {
     user_id: 2931470156,
     message: await service.getSexyPhoto(ws)
