@@ -15,22 +15,32 @@ ws.listen(data => {
     console.log(data)
   }
 
-
-
   plugins.forEach(plugin => plugin({ data, ws, http }))
 })
 
-
 app.post('/githook', async (req, res) => {
   console.log(req.body)
-  console.log("------------------------------------------------------")
+  console.log('------------------------------------------------------')
   ws.send('send_private_msg', {
     user_id: 2931470156,
-    message: await service.getSexyPhoto(ws)
+    message: await service.getSexyPhoto(ws),
   })
-  if (shell.exec('git pull').code !== 0) {
-    shell.echo('Error: Git pull failed');
-    shell.exit(1);
+  try {
+    if (shell.exec('git pull').code !== 0) {
+      shell.echo('Error: Git pull failed')
+      shell.exit(1)
+    }
+  } catch (error) {
+    console.error(error)
+    ws.send('send_private_msg', {
+      user_id: 2931470156,
+      message: [{
+        type: 'text',
+        data: {
+          text: error
+        }
+      }],
+    })
   }
   res.send('hello world')
 })
