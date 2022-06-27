@@ -42,7 +42,17 @@ async function getImage (text) {
     })
     // res.body.pipe(stream)
     console.log(filename)
-    const metadata = await sharp(filename, { animated: true }).metadata();
+    const metadata = await sharp(filename, { animated: true }).metadata().catch(err => {
+      console.error('[qrcode]', err)
+      resolve([
+        {
+          type: 'text',
+          data: {
+            text: '生成二维码失败',
+          },
+        },
+      ])
+    });
     console.log(metadata)
     await sharp(filename, { animated: true })
       .png()
