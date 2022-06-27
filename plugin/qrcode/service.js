@@ -32,7 +32,7 @@ async function getImage (text) {
         posColor: '%23000000'
       }
     }).then((res) => {
-      // console.log(res.data)
+      console.log(res.data)
       fs.writeFile(filename, res.data, err => {
         if (err) {
           console.error(err)
