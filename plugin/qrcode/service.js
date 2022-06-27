@@ -42,7 +42,7 @@ async function getImage (text) {
     })
     // res.body.pipe(stream)
     console.log(filename)
-    const metadata = await sharp(filename, { animated: true }).mage.metadata();
+    const metadata = await sharp(filename, { animated: true }).metadata();
     console.log(metadata)
     await sharp(filename, { animated: true })
       .png()
