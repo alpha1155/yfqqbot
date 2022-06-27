@@ -8,8 +8,8 @@ const sharp = require('sharp')
 async function getImage (text) {
   return new Promise(async (resolve, reject) => {
     const filename = path.join(
-      // os.tmpdir(),
-      `go_cqhttp_node_qrcode_${Date.now()}.svg`
+      os.tmpdir(),
+      `go_cqhttp_node_qrcode_${Date.now()}.png`
     )
     const filenamePng = path.join(
       os.tmpdir(),
