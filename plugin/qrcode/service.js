@@ -8,11 +8,11 @@ const sharp = require("sharp");
 async function getImage (text) {
   return new Promise(async (resolve, reject) => {
     const filename = path.join(
-      os.tmpdir(),
+      // os.tmpdir(),
       `go_cqhttp_node_qrcode_${Date.now()}.svg`
     );
     const filenamePng = path.join(
-      os.tmpdir(),
+      // os.tmpdir(),
       `go_cqhttp_node_qrcode_${Date.now()}.png`
     );
     const urlGetQrcode = "http://api.qrbtf.com/qrcode";
