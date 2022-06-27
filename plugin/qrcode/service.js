@@ -1,31 +1,52 @@
-const qr = require('qr-image')
+
 const fs = require('fs')
 const path = require('path')
 const os = require('os')
+const axios = require('axios')
+const { url } = require('inspector')
+const sharp = require('sharp')
 
-async function getImage(text) {
-  return new Promise((resolve, reject) => {
+async function getImage (text) {
+  return new Promise(async (resolve, reject) => {
     const filename = path.join(
+      os.tmpdir(),
+      `go-cqhttp-node-qrcode-${Date.now()}.svg`
+    )
+    const filenamePng = path.join(
       os.tmpdir(),
       `go-cqhttp-node-qrcode-${Date.now()}.png`
     )
-    const stream = fs.createWriteStream(filename)
-    qr.image(text, {
-      type: 'png',
-      size: 10,
-      margin: 2
-    }).pipe(stream)
-    stream.on('finish', () =>
-      resolve([
-        {
-          type: 'image',
-          data: {
-            file: 'file://' + filename
-          }
+    const urlGetQrcode = 'http://api.qrbtf.com/qrcode'
+    await axios({
+      method: 'GET',
+      url: urlGetQrcode,
+      params: {
+        data: text,
+        level: 'M',
+        style: 'base',
+        type: 'round',
+        size: 50,
+        opacity: 30,
+        posType: 'planet',
+        otherColor: '%23000000',
+        posColor: '%23000000'
+      }
+    }).then((res) => {
+      // console.log(res.data)
+      fs.writeFile(filename, res.data, err => {
+        if (err) {
+          console.error(err)
+          return
         }
-      ])
-    )
-    stream.on('error', err => {
+        //文件写入成功。
+      })
+    })
+    // res.body.pipe(stream)
+    await sharp(filename).png().toFile(filenamePng).then(
+      (res) => {
+        console.log(res)
+      }
+    ).catch((err) => {
       console.error('[qrcode]', err)
       resolve([
         {
@@ -36,6 +57,15 @@ async function getImage(text) {
         }
       ])
     })
+    resolve([
+      {
+        type: 'image',
+        data: {
+          file: 'file://' + filenamePng
+        }
+      }
+    ])
+
   })
 }
 

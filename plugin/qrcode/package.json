@@ -1,6 +1,8 @@
 {
   "dependencies": {
     "awesome-qr": "^2.1.5-rc.0",
-    "qr-image": "^3.2.0"
+    "axios": "^0.27.2",
+    "qr-image": "^3.2.0",
+    "sharp": "^0.30.7"
   }
 }
