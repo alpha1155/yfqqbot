@@ -42,21 +42,25 @@ async function getImage (text) {
       })
     })
     // res.body.pipe(stream)
-    await sharp(filename).png().toFile(filenamePng).then(
-      (res) => {
-        console.log(res)
-      }
-    ).catch((err) => {
-      console.error('[qrcode]', err)
-      resolve([
-        {
-          type: 'text',
-          data: {
-            text: '生成二维码失败'
-          }
+    await sharp(filename)
+      .png()
+      .toFormat('png')
+      .toFile(filenamePng)
+      .then(
+        (res) => {
+          console.log(res)
         }
-      ])
-    })
+      ).catch((err) => {
+        console.error('[qrcode]', err)
+        resolve([
+          {
+            type: 'text',
+            data: {
+              text: '生成二维码失败'
+            }
+          }
+        ])
+      })
     resolve([
       {
         type: 'image',
