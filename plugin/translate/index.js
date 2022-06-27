@@ -8,12 +8,15 @@ module.exports = options => {
       return
     }
 
-    const message = data.message;
+    const message = data.message.split('[')[0];
     const user_id = data.sender.user_id
     if (user_id != 2564531977) {
       return
     }
 
+    if (message == null) {
+      return
+    }
     if (data.message_type === 'group') {
       ws.send('send_group_msg', {
         group_id: data.group_id,
