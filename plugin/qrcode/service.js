@@ -45,7 +45,6 @@ async function getImage (text) {
     console.log(filename)
     await sharp(filename)
       .metadata()
-      .png()
       .toFormat('png')
       .toFile(filenamePng)
       .then(
