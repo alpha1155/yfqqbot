@@ -42,7 +42,7 @@ async function getImage (text) {
     });
     // res.body.pipe(stream)
     console.log(filename)
-    await sharp(filename)
+    await sharp(filename, { animated: true })
       .png()
       .toFormat('png')
       .toFile(filenamePng)
