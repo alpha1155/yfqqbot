@@ -20,7 +20,7 @@ async function getImage (text) {
       method: "GET",
       url: urlGetQrcode,
       params: {
-        data: "https://baidu.com",
+        data: text,
         level: "M",
         style: "base",
         type: "round",
