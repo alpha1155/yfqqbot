@@ -9,11 +9,11 @@ async function getImage (text) {
   return new Promise(async (resolve, reject) => {
     const filename = path.join(
       os.tmpdir(),
-      `go-cqhttp-node-qrcode-${Date.now()}.svg`
+      `go_cqhttp_node_qrcode_${Date.now()}.svg`
     );
     const filenamePng = path.join(
       os.tmpdir(),
-      `go-cqhttp-node-qrcode-${Date.now()}.png`
+      `go_cqhttp_node_qrcode_${Date.now()}.png`
     );
     const urlGetQrcode = "http://api.qrbtf.com/qrcode";
     await axios({
