@@ -9,7 +9,7 @@ async function getImage (text) {
   return new Promise(async (resolve, reject) => {
     const filename = path.join(
       os.tmpdir(),
-      `go_cqhttp_node_qrcode_${Date.now()}.png`
+      `go_cqhttp_node_qrcode_${Date.now()}.svg`
     )
     const filenamePng = path.join(
       os.tmpdir(),
@@ -31,8 +31,8 @@ async function getImage (text) {
         posColor: '%23000000',
       },
     }).then(res => {
-      // console.log(res.data)
-      fs.writeFile(filename, res.data, err => {
+      let data = res.data.replaceAll('white', 'black').replaceAll('0.3', '0.9')
+      fs.writeFile(filename, data, err => {
         if (err) {
           console.error(err)
           return
@@ -44,17 +44,18 @@ async function getImage (text) {
     console.log(filename)
     const metadata = await sharp(filename, { animated: true }).metadata().catch(err => {
       console.error('[qrcode]', err)
-      resolve([
-        {
-          type: 'text',
-          data: {
-            text: '生成二维码失败',
-          },
-        },
-      ])
+      // resolve([
+      //   {
+      //     type: 'text',
+      //     data: {
+      //       text: '生成二维码失败',
+      //     },
+      //   },
+      // ])
     });
     console.log(metadata)
     await sharp(filename, { animated: true })
+      .resize(300, 300)
       .png()
       .toFormat('png')
       .toFile(filenamePng)
@@ -63,14 +64,14 @@ async function getImage (text) {
       })
       .catch(err => {
         console.error('[qrcode]', err)
-        resolve([
-          {
-            type: 'text',
-            data: {
-              text: '生成二维码失败',
-            },
-          },
-        ])
+        // resolve([
+        //   {
+        //     type: 'text',
+        //     data: {
+        //       text: '生成二维码失败',
+        //     },
+        //   },
+        // ])
       })
     resolve([
       {
