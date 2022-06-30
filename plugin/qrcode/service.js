@@ -44,17 +44,10 @@ async function getImage (text) {
     console.log(filename)
     const metadata = await sharp(filename, { animated: true }).metadata().catch(err => {
       console.error('[qrcode]', err)
-      // resolve([
-      //   {
-      //     type: 'text',
-      //     data: {
-      //       text: '生成二维码失败',
-      //     },
-      //   },
-      // ])
     });
     console.log(metadata)
     await sharp(filename, { animated: true })
+      .flatten({ background: '#ffffff' })
       .resize(300, 300)
       .png()
       .toFormat('png')
@@ -64,14 +57,6 @@ async function getImage (text) {
       })
       .catch(err => {
         console.error('[qrcode]', err)
-        // resolve([
-        //   {
-        //     type: 'text',
-        //     data: {
-        //       text: '生成二维码失败',
-        //     },
-        //   },
-        // ])
       })
     resolve([
       {
