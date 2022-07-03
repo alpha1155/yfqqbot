@@ -75,7 +75,7 @@ async function getDouyinHot() {
 async function getWeiboHot() {
   try {
     let url =
-      "https://tenapi.cn/douyinresou/";
+      "https://tenapi.cn/resou/";
     let message = await axios({ url: url, method: "get" }).then((res) => {
       console.log(res.data.list);
       let data = res.data.list;
@@ -109,5 +109,6 @@ async function getWeiboHot() {
 }
 module.exports = {
   getZhihuHot,
-  getDouyinHot
+  getDouyinHot,
+  getWeiboHot
 }
