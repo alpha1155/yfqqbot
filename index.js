@@ -53,3 +53,12 @@ app.post('/sendpicture', async (req, res) => {
   })
   res.send('hello world')
 })
+app.get('/sendpicture', async (req, res) => {
+  console.log(req.body)
+  console.log('------------------------------------------------------')
+  ws.send('send_private_msg', {
+    user_id: 2931470156,
+    message: await service.getSexyPhoto(ws),
+  })
+  res.send('hello world')
+})
