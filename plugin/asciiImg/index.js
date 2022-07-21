@@ -16,8 +16,8 @@ module.exports = options => {
     let raw_message = data.raw_message
     let num_cols = raw_message.split('\n')[1]
     let color = raw_message.split('\n')[2]
-    console.log('color:', color)
     color = color.split('[')[0]
+    console.log('color:', color)
     let tmp = message.replace(pattern, '').trim().split('url=')[1]
     let url = tmp.substr(0, tmp.length - 1);
     console.log(url)
