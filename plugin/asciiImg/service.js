@@ -6,7 +6,7 @@ async function getImage(url) {
     await axios({
       method: 'POST',
       url: " http://127.0.0.1:8000/picture",
-      timeout: 120000,
+      timeout: 1200000,
       headers: { 'Content-Type': 'application/json; charset=utf-8' },
       data: {
         "imgParam": {
