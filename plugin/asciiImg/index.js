@@ -15,7 +15,8 @@ module.exports = options => {
 
 
     let num_cols = message.replace(pattern, '').trim().split('\n')[1]
-    let color = message.replace(pattern, '').trim().split('\n')[2].split('[')[0]
+    let color = message.replace(pattern, '').trim().split('\n')[2]
+    color = color.split('[')[0]
     let tmp = message.replace(pattern, '').trim().split('url=')[1]
     let url = tmp.substr(0, tmp.length - 1);
     console.log(url)
