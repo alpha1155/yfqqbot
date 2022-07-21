@@ -36,7 +36,7 @@ module.exports = options => {
               file: url
             }
           },
-          // ...(await service.getImage(url))
+          ...(await service.getImage(url))
         ]
       })
       return
