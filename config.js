@@ -5,6 +5,7 @@ module.exports = {
   },
   plugin: {
     './plugin/anime': {},
+    './plugin/asciiImg': {},
     './plugin/qrcode': {},
     './plugin/whatIsHot': {},
     './plugin/bbfre': {},
