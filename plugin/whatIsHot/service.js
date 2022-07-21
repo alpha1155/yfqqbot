@@ -1,7 +1,5 @@
 const axios = require('axios')
 
-
-
 async function getZhihuHot() {
   try {
     let url =
