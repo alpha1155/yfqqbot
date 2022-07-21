@@ -15,7 +15,7 @@ async function getImage(url) {
           "language": "chinese",
           "mode": "standard",
           "background": "black",
-          "num_cols": 500,
+          "num_cols": 50,
           "scale": 2
         }
       }
