@@ -15,7 +15,7 @@ module.exports = options => {
 
     let tmp = message.replace(pattern, '').trim().split('url=')[1]
     let url = tmp.substr(0, tmp.length - 1);
-
+    console.log(url)
     if (!url) {
       return
     }
