@@ -1,6 +1,6 @@
 const service = require('./service')
 
-const pattern = /^(转字符|ascii(cii)?)\s+/i
+const pattern = /^(转字符|as(cii)?)+/i
 
 module.exports = options => {
   return async ({ data, ws, http }) => {
