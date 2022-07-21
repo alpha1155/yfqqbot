@@ -5,7 +5,7 @@ const axios = require('axios')
 const { url } = require('inspector')
 const sharp = require('sharp')
 
-async function getImage (text) {
+async function getImage(text) {
   return new Promise(async (resolve, reject) => {
     const filename = path.join(
       os.tmpdir(),
@@ -59,10 +59,16 @@ async function getImage (text) {
         console.error('[qrcode]', err)
       })
     resolve([
+      // {
+      //   type: 'image',
+      //   data: {
+      //     file: 'file://' + filenamePng,
+      //   },
+      // },
       {
-        type: 'image',
+        type: 'text',
         data: {
-          file: 'file://' + filenamePng,
+          text: `[CQ:image,file=file://${filenamePng},type=show,id=40004]`,
         },
       },
     ])
