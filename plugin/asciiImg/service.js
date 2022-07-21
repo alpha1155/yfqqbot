@@ -28,16 +28,10 @@ async function getImage(url) {
     // res.body.pipe(stream)
 
     resolve([
-      // {
-      //   type: 'image',
-      //   data: {
-      //     file: 'file://' + imgUrl,
-      //   },
-      // },
       {
-        type: 'text',
+        type: 'image',
         data: {
-          text: `[CQ:image,file=file://${imgUrl},type=show,id=40004]`,
+          file: 'file://' + imgUrl,
         },
       },
     ])

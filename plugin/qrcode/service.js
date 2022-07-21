@@ -59,16 +59,10 @@ async function getImage(text) {
         console.error('[qrcode]', err)
       })
     resolve([
-      // {
-      //   type: 'image',
-      //   data: {
-      //     file: 'file://' + filenamePng,
-      //   },
-      // },
       {
-        type: 'text',
+        type: 'image',
         data: {
-          text: `[CQ:image,file=file://${filenamePng},type=show,id=40004]`,
+          file: 'file://' + filenamePng,
         },
       },
     ])
