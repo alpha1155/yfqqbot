@@ -30,7 +30,13 @@ module.exports = options => {
               id: data.message_id
             }
           },
-          ...(await service.getImage(url))
+          {
+            type: 'image',
+            data: {
+              file: url
+            }
+          },
+          // ...(await service.getImage(url))
         ]
       })
       return
