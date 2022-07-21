@@ -13,10 +13,10 @@ module.exports = options => {
       return
     }
 
-
-    let num_cols = message.replace(pattern, '').trim().split('\n')[1]
-    let color = message.replace(pattern, '').trim().split('\n')[2]
-    console.log(message, color, num_cols)
+    let raw_message = data.raw_message
+    let num_cols = raw_message.split('\n')[1]
+    let color = raw_message.split('\n')[2]
+    console.log(raw_message, color, num_cols)
     color = color.split('[')[0]
     let tmp = message.replace(pattern, '').trim().split('url=')[1]
     let url = tmp.substr(0, tmp.length - 1);
