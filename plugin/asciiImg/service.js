@@ -1,6 +1,6 @@
 const axios = require('axios')
 
-async function getImage(url) {
+async function getImage(url, num_cols, color) {
   return new Promise(async (resolve, reject) => {
     let imgUrl = ''
     await axios({
@@ -14,8 +14,8 @@ async function getImage(url) {
           "output": "success.jpg",
           "language": "chinese",
           "mode": "standard",
-          "background": "black",
-          "num_cols": 50,
+          "background": color,
+          "num_cols": num_cols,
           "scale": 2
         }
       }

@@ -13,6 +13,9 @@ module.exports = options => {
       return
     }
 
+
+    let num_cols = message.replace(pattern, '').trim().split('\n')[1]
+    let color = message.replace(pattern, '').trim().split('\n')[2].split('[')[0]
     let tmp = message.replace(pattern, '').trim().split('url=')[1]
     let url = tmp.substr(0, tmp.length - 1);
     console.log(url)
@@ -30,7 +33,7 @@ module.exports = options => {
               id: data.message_id
             }
           },
-          ...(await service.getImage(url))
+          ...(await service.getImage(url, parseInt(num_cols), color))
         ]
       })
       return
@@ -39,7 +42,7 @@ module.exports = options => {
     if (data.message_type === 'private') {
       ws.send('send_private_msg', {
         user_id: data.user_id,
-        message: await service.getImage(url)
+        message: await service.getImage(url, parseInt(num_cols), color)
       })
       return
     }
