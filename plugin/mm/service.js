@@ -1,6 +1,6 @@
 const axios = require('axios')
 
-const publicPath = 'http://api.muxiaoguo.cn/api/meinvtu?api_key=fb06ed58f604f91b&num=1'
+const publicPath = 'https://api.muxiaoguo.cn/api/meinvtu?api_key=fb06ed58f604f91b&num=1'
 
 async function getCos() {
   try {
