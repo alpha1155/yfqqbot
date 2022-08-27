@@ -3,7 +3,7 @@ const axios = require('axios')
 async function getZhihuHot() {
   try {
     let url =
-      "https://tenapi.cn/zhihuresou/";
+      "http://tenapi.cn/zhihuresou/";
     let message = await axios({ url: url, method: "get" }).then((res) => {
       console.log(res.data.list);
       let data = res.data.list;
@@ -38,7 +38,7 @@ async function getZhihuHot() {
 async function getDouyinHot() {
   try {
     let url =
-      "https://tenapi.cn/douyinresou/";
+      "http://tenapi.cn/douyinresou/";
     let message = await axios({ url: url, method: "get" }).then((res) => {
       console.log(res.data.list);
       let data = res.data.list;
@@ -73,7 +73,7 @@ async function getDouyinHot() {
 async function getWeiboHot() {
   try {
     let url =
-      "https://tenapi.cn/resou/";
+      "http://tenapi.cn/resou/";
     let message = await axios({ url: url, method: "get" }).then((res) => {
       console.log(res.data.list);
       let data = res.data.list;

@@ -1,8 +1,8 @@
 const axios = require('axios')
 
-const publicPath = 'https://api.muxiaoguo.cn/api/meinvtu?api_key=fb06ed58f604f91b&num=1'
+const publicPath = 'http://api.muxiaoguo.cn/api/meinvtu?api_key=fb06ed58f604f91b&num=1'
 
-async function getCos () {
+async function getCos() {
   try {
     let res = await axios(publicPath)
     const file = res.data.data[0].imgurl
