@@ -5,6 +5,7 @@ const publicPath = 'https://api.muxiaoguo.cn/api/meinvtu?api_key=fb06ed58f604f91
 async function getCos() {
   try {
     let res = await axios(publicPath)
+    console.log(res.data)
     const file = res.data.data[0].imgurl
     console.log(file)
     return [
