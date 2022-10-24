@@ -1,13 +1,13 @@
 const axios = require('axios')
 
-const publicPath = 'https://api.muxiaoguo.cn/api/meinvtu?api_key=fb06ed58f604f91b&num=1'
+const publicPath = 'http://api.muxiaoguo.cn/api/meinvtu?api_key=fb06ed58f604f91b&num=1'
 
 async function getCos(city) {
   try {
 
 
     let url =
-      "https://api.muxiaoguo.cn/api/tianqi?api_key=af0fc6a85b69a59d&type=1&city=";
+      "http://api.muxiaoguo.cn/api/tianqi?api_key=af0fc6a85b69a59d&type=1&city=";
     let message = await axios({ url: url + encodeURI(city), method: "get" }).then((res) => {
       console.log(res.data.data);
       let data = res.data.data;

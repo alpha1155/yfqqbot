@@ -1,9 +1,9 @@
 
 const axios = require('axios')
 
-const publicPath = 'https://api.muxiaoguo.cn/api/caihongpi?api_key=62d91d51b2b25707'
+const publicPath = 'http://api.muxiaoguo.cn/api/caihongpi?api_key=62d91d51b2b25707'
 
-async function getCos () {
+async function getCos() {
   try {
     let res = await axios(publicPath)
     const text = res.data.data.comment

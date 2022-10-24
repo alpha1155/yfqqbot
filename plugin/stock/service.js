@@ -133,7 +133,7 @@ async function getDetail(key, typeName, title = '') {
       if (typeName === '基金') {
         await page.waitForSelector('.otc-evaluation', { timeout: 1000 })
       }
-    } catch (e) {}
+    } catch (e) { }
     const screenshot = path.join(os.tmpdir(), `go-cqhttp-node-stock-${key}.png`)
     await page.screenshot({ path: screenshot })
     return 'file://' + screenshot
@@ -218,8 +218,7 @@ async function getStock(input, options) {
           output
             .map(
               (item, index) =>
-                `${output.length === 1 ? '' : `${index + 1} `}${
-                  item.SecurityTypeName
+                `${output.length === 1 ? '' : `${index + 1} `}${item.SecurityTypeName
                 } ${item.Code} ${item.Name}`
             )
             .join('\n') + foot
