@@ -8,9 +8,9 @@ RUN mkdir -p /home/yfQQ/docker
 WORKDIR /home/yfQQ/docker
 
 # RUN/COPY 是分层的，package.json 提前，只要没修改，就不会重新安装包
-COPY package.json /home/yfQQ/docker/package.json
-RUN cd /home/yfQQ/docker
-RUN npm i
+# COPY package.json /home/yfQQ/docker/package.json
+# RUN cd /home/yfQQ/docker
+# RUN npm i
 
 # 把当前目录下的所有文件拷贝到 Image 的 /usr/src/nodejs/ 目录下
 COPY . /home/yfQQ/docker
