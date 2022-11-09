@@ -28,13 +28,13 @@ function reData() {
 
 module.exports = options => {
     ({ ws }) => {
-
+console.log("adwasaddsad---------------------------------------------------------------")
         let rule = new schedule.RecurrenceRule();
         rule.hour = [8, 22];
         rule.minute = 0;
         rule.second = 0;
 
-        let job = schedule.scheduleJob(rule, (ws) => {
+        let job = schedule.scheduleJob('* * * * * *', (ws) => {
 
             let deadlines = reData()
 
