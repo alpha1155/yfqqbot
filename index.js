@@ -20,36 +20,10 @@ ws.listen(data => {
 
 
 
-  plugins.forEach(plugin => plugin({ data, ws, http }))
-    (function sch(ws) {
-      let rule = new schedule.RecurrenceRule();
-      rule.hour = 18;
-      rule.minute = 0;
-      rule.second = 0;
-      console.log(ws)
-      let job = schedule.scheduleJob('* * * * * *', (ws) => {
+  plugins.forEach(plugin => plugin({ data, ws, http }));
 
-        let deadlines = reData()
 
-        /*ws.send('send_group_msg', {
-            group_id: 1019336961,
-            message: [
-    
-                {
-                    type: 'text',
-                    data: {
-                        text: `距六级考试还有${deadlines.cet6}天\n距研究生招生考试还有${deadlines.masterExam}天`
-                    }
-                }
-            ]
-        })*/
-        ws.send('send_private_msg', {
-          user_id: 2931470156,
-          message: [{ type: 'text', data: { text: "------" } }],
-        })
-      })
 
-    })(ws)
 })
 
 
@@ -80,6 +54,40 @@ function reData() {
   return deadlines;
 }
 
+let rule = new schedule.RecurrenceRule();
+rule.hour = [8, 22];
+rule.minute = 0;
+rule.second = 0;
+function send() {
+  let deadlines = reData()
+  // ws.send('send_private_msg', {
+  //   user_id: 2931470156,
+  //   message: [
+
+  //     {
+  //       type: 'text',
+  //       data: {
+  //         text: `距六级考试还有${deadlines.cet6}天\n距研究生招生考试还有${deadlines.masterExam}天`
+  //       }
+  //     }
+  //   ]
+  // })
+  ws.send('send_group_msg', {
+    group_id: 1019336961,
+    message: [
+
+      {
+        type: 'text',
+        data: {
+          text: `距六级考试还有${deadlines.cet6}天\n距研究生招生考试还有${deadlines.masterExam}天`
+        }
+      }
+    ]
+  })
+}
+let job = schedule.scheduleJob(rule, () => {
+  send()
+})
 
 
 app.post('/githook', async (req, res) => {
