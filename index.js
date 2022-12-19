@@ -79,7 +79,8 @@ function send() {
       {
         type: 'text',
         data: {
-          text: `距六级考试还有${deadlines.cet6}天\n距研究生招生考试还有${deadlines.masterExam}天`
+          text: `距研究生招生考试还有${deadlines.masterExam}天`
+          // text: `距六级考试还有${deadlines.cet6}天\n距研究生招生考试还有${deadlines.masterExam}天`
         }
       }
     ]
