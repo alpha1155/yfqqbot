@@ -72,19 +72,19 @@ function send() {
   //     }
   //   ]
   // })
-  ws.send('send_group_msg', {
-    group_id: 1019336961,
-    message: [
+  // ws.send('send_group_msg', {
+  //   group_id: 1019336961,
+  //   message: [
 
-      {
-        type: 'text',
-        data: {
-          text: `距研究生招生考试还有${deadlines.masterExam}天`
-          // text: `距六级考试还有${deadlines.cet6}天\n距研究生招生考试还有${deadlines.masterExam}天`
-        }
-      }
-    ]
-  })
+  //     {
+  //       type: 'text',
+  //       data: {
+  //         text: `距研究生招生考试还有${deadlines.masterExam}天`
+  //         // text: `距六级考试还有${deadlines.cet6}天\n距研究生招生考试还有${deadlines.masterExam}天`
+  //       }
+  //     }
+  //   ]
+  // })
 }
 let job = schedule.scheduleJob(rule, () => {
   send()
