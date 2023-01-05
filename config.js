@@ -8,7 +8,7 @@ module.exports = {
     // './plugin/asciiImg': {},
     './plugin/whatIsHot': {},
     './plugin/bbfre': {},
-    './plugin/qrcode': {},
+    // './plugin/qrcode': {},
     './plugin/dyh': {},
     './plugin/zhouhao': {},
     './plugin/weather': {},

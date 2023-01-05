@@ -26,7 +26,6 @@ PM2.5指数：${data[0].pm25}
 日期：${data[1].date}
 天气：${data[1].weather}
 相对湿度：${data[1].humidity}
-温度：${data[1].temp}
 最高温度：${data[1].low}
 最低温度：${data[1].high}
 风级：${data[1].windLevel}
@@ -36,7 +35,6 @@ PM2.5指数：${data[1].pm25}
 日期：${data[2].date}
 天气：${data[2].weather}
 相对湿度：${data[2].humidity}
-温度：${data[2].temp}
 最高温度：${data[2].low}
 最低温度：${data[2].high}
 风级：${data[2].windLevel}
@@ -46,7 +44,6 @@ PM2.5指数：${data[2].pm25}
 日期：${data[3].date}
 天气：${data[3].weather}
 相对湿度：${data[3].humidity}
-温度：${data[3].temp}
 最高温度：${data[3].low}
 最低温度：${data[3].high}
 风级：${data[3].windLevel}
