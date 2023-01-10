@@ -28,7 +28,6 @@ PM2.5指数：${data[0].pm25}
 最高温度：${data[1].low}
 最低温度：${data[1].high}
 风级：${data[1].windLevel}
-PM2.5指数：${data[1].pm25}
 空气质量：${data[1].airQuality}
 
 日期：${data[2].date}
@@ -36,7 +35,6 @@ PM2.5指数：${data[1].pm25}
 最高温度：${data[2].low}
 最低温度：${data[2].high}
 风级：${data[2].windLevel}
-PM2.5指数：${data[2].pm25}
 空气质量：${data[2].airQuality}
 
 日期：${data[3].date}
@@ -44,7 +42,6 @@ PM2.5指数：${data[2].pm25}
 最高温度：${data[3].low}
 最低温度：${data[3].high}
 风级：${data[3].windLevel}
-PM2.5指数：${data[3].pm25}
 空气质量：${data[3].airQuality}`;
       return msg
     });

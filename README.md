@@ -77,6 +77,8 @@ module.exports = options => {
 
 > 因为 go-cqhttp 登录需要交互操作, 而 pm2 不支持, 所以这里用 screen 运行 go-cqhttp, 你也可以用其它方法后台运行
 
-## 其它
 
-- [go-cqhttp/java](https://github.com/go-cqhttp/java) - qq 机器人 java 版
+something more
+
+https://github.com/transitive-bullshit/chatgpt-api#docs
+https://fanyi-api.baidu.com/doc/21
